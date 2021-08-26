@@ -9,7 +9,7 @@ st.title("GPT-3 Demo")
 st.text("Demo GPT-3 with Streamlit")
 
 # Load your API key
-openai.api_key = config('KEY')
+openai.api_key = "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"
 
 
 def main():
