@@ -76,7 +76,7 @@ def main():
             st.success(f'Something went wrong! {e}')
 
     if selected_box == "Classification":
-        st.header("Classification with GPT-3")
+        st.header("Write an essay with GPT-3")
         try:
             form = st.form(key="my_form")
             command = form.text_area(label="Give the title of your essay", value="Uses of GPT in education. \n", height=200)
