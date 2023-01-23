@@ -1,5 +1,5 @@
 import streamlit as st
-from decouple import config
+import os
 import openai
 
 st.set_page_config(page_title="GPT-3 Demo")
