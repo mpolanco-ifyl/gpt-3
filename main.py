@@ -2,11 +2,11 @@ import streamlit as st
 import os
 import openai
 
-st.set_page_config(page_title="GPT-3 Demo")
+st.set_page_config(page_title="GPT-3 Writer")
 
-st.title("GPT-3 Demo")
+st.title("GPT-3 Writer")
 
-st.text("Demo GPT-3 with Streamlit")
+st.text("GPT-3 with Streamlit")
 
 # Load your API key
 openai.api_key = os.environ.get("OPENAI_API_KEY")
@@ -75,7 +75,7 @@ def main():
         except Exception as e:
             st.success(f'Something went wrong! {e}')
 
-    if selected_box == "Classification":
+    if selected_box == "Essay Writer":
         st.header("Write an essay with GPT-3")
         try:
             form = st.form(key="my_form")
