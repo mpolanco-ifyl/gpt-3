@@ -16,7 +16,7 @@ def main():
 
     selected_box = st.sidebar.selectbox(
         "Choose one of the following",
-        ("Instruct", "Chat", "Q&A", "Classification", "TL;DR Summarization", "Essay Outline")
+        ("Instruct", "Chat", "Q&A", "Essay Writer", "TL;DR Summarization", "Essay Outline")
     )
 
     if selected_box == "Instruct":
@@ -25,7 +25,7 @@ def main():
 
         try:
             form = st.form(key="my_form5")
-            command = form.text_area(label="Enter some instructions here", value="Write a poem",height=200)
+            command = form.text_area(label="Enter instructions here", value="Write a poem",height=200)
             max_tokens = st.number_input("Response Length", max_value=3048, value=max_tokens, step=1)
             submit_button = form.form_submit_button(label="Submit")
 
@@ -79,7 +79,7 @@ def main():
         st.header("Classification with GPT-3")
         try:
             form = st.form(key="my_form")
-            command = form.text_area(label="Enter some text here", value="Melakukan Klasifikasi item menjadi beberapa kategori. \n", height=200)
+            command = form.text_area(label="Give the title of your essay", value="Uses of GPT in education. \n", height=200)
             submit_button = form.form_submit_button(label="Submit")
 
             if submit_button:
@@ -175,11 +175,11 @@ def classification_gpt3(prompt):
     response = openai.Completion.create(
         engine="text-davinci-003",
         prompt=prompt,
-        temperature=0,
-        max_tokens=6,
+        temperature=0.7,
+        max_tokens=3400,
         top_p=1,
-        frequency_penalty=0.0,
-        presence_penalty=0.0,
+        frequency_penalty=0.3,
+        presence_penalty=0.3,
         stop=["\n"]
     )
     answer = response.choices[0]['text']
