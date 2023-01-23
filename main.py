@@ -179,8 +179,7 @@ def classification_gpt3(prompt):
         max_tokens=3400,
         top_p=1,
         frequency_penalty=0.3,
-        presence_penalty=0.3,
-        stop=["\n"]
+        presence_penalty=0.3
     )
     answer = response.choices[0]['text']
     return answer
