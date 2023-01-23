@@ -114,7 +114,7 @@ def main():
 
         try:
             form = st.form(key="my_form2")
-            command = form.text_area(label="Enter some command here", height=200)
+            command = form.text_area(label="Enter some command here", value="Provide an outline for an essay on the Civil War.", height=200)
             max_tokens = st.number_input("Response Length", max_value=2048, value=max_tokens, step=1)
             submit_button = form.form_submit_button(label="Submit")
 
