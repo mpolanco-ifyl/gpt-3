@@ -129,7 +129,7 @@ def main():
 
 def instruct_gpt3(prompt, max_tokens):
     response = openai.Completion.create(
-        engine="davinci",
+        engine="text-davinci-003",
         prompt=prompt,
         temperature=0.7, 
         max_tokens=3050,
