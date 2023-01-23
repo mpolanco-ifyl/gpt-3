@@ -16,9 +16,29 @@ def main():
 
     selected_box = st.sidebar.selectbox(
         "Choose one of the following",
-        ("Chat", "Q&A", "Classification", "TL;DR Summarization", "Essay Outline")
+        ("Instruct", "Chat", "Q&A", "Classification", "TL;DR Summarization", "Essay Outline")
     )
 
+    if selected_box == "Instruct":
+        st.header("Instruct GPT-3")
+        max_tokens = 150
+
+        try:
+            form = st.form(key="my_form5")
+            command = form.text_area(label="Enter some instructions here", value="Write a poem:",height=200)
+            max_tokens = st.number_input("Response Length", max_value=3048, value=max_tokens, step=1)
+            submit_button = form.form_submit_button(label="Submit")
+
+            if submit_button:
+                st.header("Result")
+                answer = instruct_gpt3(command, max_tokens)
+                command += answer
+                st.write(answer)
+
+            
+        except Exception as e:
+            st.success(f'Something went wrong! {e}')
+            
     if selected_box == "Chat":
         st.header("Chat with GPT-3")
         max_tokens = 150
@@ -107,6 +127,20 @@ def main():
         except Exception as e:
             st.success(f'Something went wrong! {e}')
 
+def instruct_gpt3(prompt, max_tokens):
+    response = openai.Completion.create(
+        engine="davinci",
+        prompt=prompt,
+        temperature=0.7, 
+        max_tokens=3050,
+        top_p=1,
+        frequency_penalty=0.0,
+        presence_penalty=0.0
+    )
+
+    answer = response.choices[0]['text']
+    return answer
+            
 def chat_gpt3(prompt, max_tokens):
     response = openai.Completion.create(
         engine="davinci",
