@@ -25,7 +25,7 @@ def main():
 
         try:
             form = st.form(key="my_form5")
-            command = form.text_area(label="Enter some instructions here", value="Write a poem:",height=200)
+            command = form.text_area(label="Enter some instructions here", value="Write a poem",height=200)
             max_tokens = st.number_input("Response Length", max_value=3048, value=max_tokens, step=1)
             submit_button = form.form_submit_button(label="Submit")
 
@@ -132,7 +132,7 @@ def instruct_gpt3(prompt, max_tokens):
         engine="text-davinci-003",
         prompt=prompt,
         temperature=0.7, 
-        max_tokens=3050,
+        max_tokens=2050,
         top_p=1,
         frequency_penalty=0.0,
         presence_penalty=0.0
@@ -143,7 +143,7 @@ def instruct_gpt3(prompt, max_tokens):
             
 def chat_gpt3(prompt, max_tokens):
     response = openai.Completion.create(
-        engine="davinci",
+        engine="text-davinci-003",
         prompt=prompt,
         temperature=0.9, 
         max_tokens=max_tokens,
@@ -158,7 +158,7 @@ def chat_gpt3(prompt, max_tokens):
 
 def qna_gpt3(prompt):
     response = openai.Completion.create(
-        engine="davinci",
+        engine="text-davinci-003",
         prompt=prompt,
         temperature=0,
         max_tokens=100,
@@ -173,7 +173,7 @@ def qna_gpt3(prompt):
 def classification_gpt3(prompt):
     
     response = openai.Completion.create(
-        engine="davinci",
+        engine="text-davinci-003",
         prompt=prompt,
         temperature=0,
         max_tokens=6,
@@ -188,7 +188,7 @@ def classification_gpt3(prompt):
 def tldr_gpt3(prompt):
     
     response = openai.Completion.create(
-        engine="davinci",
+        engine="text-davinci-003",
         prompt=prompt,
         temperature=0.3,
         max_tokens=60,
@@ -202,7 +202,7 @@ def tldr_gpt3(prompt):
 
 def essay_gpt3(prompt, max_tokens):
     response = openai.Completion.create(
-        engine="davinci",
+        engine="text-davinci-003",
         prompt=prompt,
         max_tokens=max_tokens,
         top_p=1.0,
